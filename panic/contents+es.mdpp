@@ -1,0 +1,6 @@
+_model: page
+---
+!INCLUDE "panic/contents+es.md"
+
+---
+sortstring: b

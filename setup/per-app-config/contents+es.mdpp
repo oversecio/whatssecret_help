@@ -1,0 +1,32 @@
+_model: page
+---
+!INCLUDE "setup/per-app-config/title+es.md"
+
+---
+body:
+
+<div class="buttoncircle"><img src="ic_settings_black_24dp.png"/></div>
+!INCLUDE "setup/per-app-config/intro_appsec+es.md"
+
+
+<a name="main"></a>
+!INCLUDE "setup/per-app-config/general+es.md"
+
+!INCLUDE "setup/per-app-config/config+es.md"
+
+!INCLUDE "setup/per-app-config/starthidden_appsec+es.md"
+
+!INCLUDE "setup/per-app-config/hide+es.md"
+
+!INCLUDE "setup/per-app-config/decrypt+es.md"
+
+<a name="appearance"></a>
+!INCLUDE "setup/per-app-config/appearance+es.md"
+
+---
+sortstring: m
+---
+_template:
+
+page_apps.html
+

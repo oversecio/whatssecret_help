@@ -1,0 +1,273 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 
+<link rel="stylesheet" href="/static/w3.css">
+  <link rel="stylesheet" href="/static/w3-theme-blue.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="/static/style.css">
+
+  <title>Setup — Oversec Online Help</title>
+
+     <script>
+    /*
+    Browser Language Redirect script- By JavaScript Kit
+    For this and over 400+ free scripts, visit http://www.javascriptkit.com
+    This notice must stay intact
+    */
+    //Enter ISO 639-2 letter Language codes to detect (see: http://www.w3.org/WAI/ER/IG/ert/iso639.htm):
+    var langcodes=new Array("en", "de", "fr", "es", "pt", "ru", "default")
+    //Enter corresponding redirect URLs (last one is for default URL):
+    var langredirects=new Array("en", "de", "fr", "es", "pt", "ru", "en")
+    var languageinfo=navigator.language? navigator.language : navigator.userLanguage
+    var gotodefault=1
+    
+
+    //alert("languageinfo: "+languageinfo.substr(0,2));
+
+
+
+
+function w3_open() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "block";
+}
+function w3_close() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "none";
+}
+
+function toggleLang() {
+ document.getElementById("langDropdown").classList.toggle("show");
+}
+
+
+//TODO: write a lektor plugin (see https://github.com/lektor/lektor-markdown-admonition for an example)
+//to fix the links during *build* time
+
+function prependAlternatives() {
+
+  var curlang=""
+  for (i=0;i<langcodes.length-1;i++){
+        if (window.location.pathname.startsWith("/"+langcodes[i]+"/")) {
+          // alert("Hoorikaj" +i+ "=="+langcodes[i]+" // "+langredirects[i])
+          curlang = langcodes[i]
+          break
+        }
+      }
+
+
+  for(i=0;i<document.links.length;i++) 
+    { 
+     pathname=document.links[i].pathname
+     classname = document.links[i].className
+     if (   "noprepend"!=classname &&
+             pathname.startsWith("/") && 
+            !pathname.startsWith("/"+curlang+"/")
+            ) 
+       {
+         newpathname =  "/" +curlang +pathname;
+         //alert ("newpathname="+newpathname)
+         document.links[i].pathname = newpathname;
+       }
+    } 
+}
+window.onload = prependAlternatives
+
+    </script>
+<style type="text/css">
+  
+
+/* Dropdown Button */
+.dropbtn {
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFD89E;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+</style>
+
+</head>
+<body>
+
+<nav  class="w3-sidenav w3-card-2 w3-top main-nav" style="width:50%;display:none;z-index:2">
+  <div class="w3-container w3-theme-d2 oversec-header"  onclick="w3_close()">
+   <h4>
+   <i class="w3-closenav w3-rleft w3-xlarge fa fa-close" style="padding-top:5px" onclick="w3_close()"></i>
+
+    </h4>
+  </div>
+  
+
+<div >
+  
+    <a class="menuentry" href="/"><h5>Welcome</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/buttons/"><h5>Buttons</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/encoding/"><h5>Encoding</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/panic/"><h5>Panic</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/setup/"><h5>Setup</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/setup/per-app-config/"><h5>Per-App Configuration</h5></a>
+    
+  
+  </div>
+    
+  
+  
+    <a class="menuentry" href="/encryption-parameters/"><h5>Encryption Parameters</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/faq/"><h5>FAQ</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/contact/"><h5>Contact</h5></a>
+    
+  
+  </div>
+    
+  
+  
+
+</div>
+
+</nav>
+
+<header class="w3-container w3-card-4 w3-theme w3-top oversec-header">
+
+  <span class="headline">
+  <i class="w3-opennav fa fa-bars" onclick="w3_open()"></i>
+ Oversec Help
+  </span>
+  <div style="float: right; display: inline-block; margin-right:5px">
+
+<div class="dropdown">
+  <img src="/static/flags/UN.png" onclick="toggleLang()" class="dropbtn"/>
+  <div id="langDropdown" class="dropdown-content">
+      <a class="noprepend" href="/en/setup/"><img src="/static/flags/GB.png"></a>
+      <a class="noprepend" href="/de/setup/"><img src="/static/flags/DE.png"></a>
+      <a class="noprepend" href="/fr/setup/"><img src="/static/flags/FR.png"></a>
+      <a class="noprepend" href="/es/setup/"><img src="/static/flags/ES.png"></a>
+      <a class="noprepend" href="/pt/setup/"><img src="/static/flags/PT.png"></a>
+      <a class="noprepend" href="/ru/setup/"><img src="/static/flags/RU.png"></a>
+  </div>
+</div>
+
+
+  </div>
+</header>
+
+<div class="w3-container" style="margin-top:30px">
+    
+  <h2>Setup</h2>
+  <p><a name="main_help"></a>
+<a name="main_help_acsconfig"></a></p>
+<h3>Required Setup</h3>
+<p>The basic operating principle of WhatsSecret is that it constantly monitors the screen for encrypted text.</p>
+<p>To be able to read the screen contents, it has to be enabled as a so called "Accessibility Service".</p>
+<p>So as the first step, before you can use WhatsSecret, you need to enable WhatsSecret as an Accessibility Service in Androids "Accessibility Settings".</p>
+<p>Tapping on "Configure" will lead you directly to the relevant Settings page:</p>
+<p>Now tap on "WhatsSecret"
+<br></br>
+<img src="acs_settings_step_1_L.png"></img>
+<br></br>
+Now tap on the switch in the upper right corner
+<br></br>
+<img src="acs_settings_step_2_L.png"></img>
+<br></br>
+Tap on "OK"
+<br></br>
+<img src="acs_settings_step_3_L.png"></img>
+<br></br>
+Now the switch should be ON. Tap on "BACK"
+<br></br>
+<img src="acs_settings_step_4_L.png"></img>
+<br></br>
+Now WhatsSecret should be "on". Tap on "BACK"
+<br></br>
+<img src="acs_settings_step_5_L.png"></img>
+<br></br></p>
+<p><a name="main_help_accessibilitysettingsnotresolvable"></a>
+On some phones with a custom Android version, the settings page that let's you configure Accessibility Services is not available or not in the expected place.</p>
+<p>Please manually try to locate the "Accessibility" page in your phone's Settings and then <a href="#main_help_acsconfig">enable WhatsSecret as an Accessibility Service.</a></p>
+<p><a name="main_settings"></a></p>
+<h3>General Settings</h3>
+<h4>Allow Screenshots</h4>
+<p>By default, Oversec prevents the system from taking screenshots while showing sensitive information. Depending on the way the screenshots are made, taking screenshots either fails or produces a blank or black image.</p>
+<p>You can disable this behavior temporarily if you want to take screenshots to show or tell about Oversec, but we strongly recommend to keep this setting OFF!</p>
+<h4>Panic when screen off</h4>
+<p>Enter panic mode when screen turns off. Enable this if you want to enter Panic Mode every time the phone screen turns off. You will have to dial a secrete code in the dialer to reactivate Oversec. Use this to make you phone look inconspicuous every tine youturn on the screen.</p>
+<h4>Hide launcher icon in Panic Mode</h4>
+<p>Enable this to hide the Oversec launcher icon while in panic mode. You will have to dial a secrete code in the dialer to reactivate Oversec and unhide the launcher icon.</p>
+<h4>Secret Dialer Code</h4>
+<p>Configure the code to dial (in the dialer app) to reactivate Oversec (exit panic mode)
+<a name="main_decoy"></a></p>
+<h3>Decoy Content</h3>
+<p>When using <a href="/encoding">Invisible Encoding</a>,  to fool any 3rd party observer, you can automatically add visible decoy text in place of the invisible encrypted text.</p>
+<p>Under the "Decoy" tab of the main app settings, you may define your own decoy patterns or modify the default patterns.</p>
+<p>Hint: 
+Here are some great websites where you can generate decoy content from</p>
+<ul>
+<li><a href="http://lyrics.wikia.com/wiki/LyricWiki:Top_100">Song Lyrics</a></li>
+<li><a href="http://panipsum.com/">Pan Ipsum</a></li>
+</ul>
+
+
+</div>
+
+
+<br/>
+<br/>
+<footer class="w3-container">
+<!--
+    &copy; Copyright 2016 by oversec.io.
+-->
+  </footer>
+</div> 
+</body>

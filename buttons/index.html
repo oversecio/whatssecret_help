@@ -1,0 +1,259 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 
+<link rel="stylesheet" href="/static/w3.css">
+  <link rel="stylesheet" href="/static/w3-theme-blue.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="/static/style.css">
+
+  <title>Buttons — Oversec Online Help</title>
+
+     <script>
+    /*
+    Browser Language Redirect script- By JavaScript Kit
+    For this and over 400+ free scripts, visit http://www.javascriptkit.com
+    This notice must stay intact
+    */
+    //Enter ISO 639-2 letter Language codes to detect (see: http://www.w3.org/WAI/ER/IG/ert/iso639.htm):
+    var langcodes=new Array("en", "de", "fr", "es", "pt", "ru", "default")
+    //Enter corresponding redirect URLs (last one is for default URL):
+    var langredirects=new Array("en", "de", "fr", "es", "pt", "ru", "en")
+    var languageinfo=navigator.language? navigator.language : navigator.userLanguage
+    var gotodefault=1
+    
+
+    //alert("languageinfo: "+languageinfo.substr(0,2));
+
+
+
+
+function w3_open() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "block";
+}
+function w3_close() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "none";
+}
+
+function toggleLang() {
+ document.getElementById("langDropdown").classList.toggle("show");
+}
+
+
+//TODO: write a lektor plugin (see https://github.com/lektor/lektor-markdown-admonition for an example)
+//to fix the links during *build* time
+
+function prependAlternatives() {
+
+  var curlang=""
+  for (i=0;i<langcodes.length-1;i++){
+        if (window.location.pathname.startsWith("/"+langcodes[i]+"/")) {
+          // alert("Hoorikaj" +i+ "=="+langcodes[i]+" // "+langredirects[i])
+          curlang = langcodes[i]
+          break
+        }
+      }
+
+
+  for(i=0;i<document.links.length;i++) 
+    { 
+     pathname=document.links[i].pathname
+     classname = document.links[i].className
+     if (   "noprepend"!=classname &&
+             pathname.startsWith("/") && 
+            !pathname.startsWith("/"+curlang+"/")
+            ) 
+       {
+         newpathname =  "/" +curlang +pathname;
+         //alert ("newpathname="+newpathname)
+         document.links[i].pathname = newpathname;
+       }
+    } 
+}
+window.onload = prependAlternatives
+
+    </script>
+<style type="text/css">
+  
+
+/* Dropdown Button */
+.dropbtn {
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFD89E;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+</style>
+
+</head>
+<body>
+
+<nav  class="w3-sidenav w3-card-2 w3-top main-nav" style="width:50%;display:none;z-index:2">
+  <div class="w3-container w3-theme-d2 oversec-header"  onclick="w3_close()">
+   <h4>
+   <i class="w3-closenav w3-rleft w3-xlarge fa fa-close" style="padding-top:5px" onclick="w3_close()"></i>
+
+    </h4>
+  </div>
+  
+
+<div >
+  
+    <a class="menuentry" href="/"><h5>Welcome</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/buttons/"><h5>Buttons</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/encoding/"><h5>Encoding</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/panic/"><h5>Panic</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/setup/"><h5>Setup</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/setup/per-app-config/"><h5>Per-App Configuration</h5></a>
+    
+  
+  </div>
+    
+  
+  
+    <a class="menuentry" href="/encryption-parameters/"><h5>Encryption Parameters</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/faq/"><h5>FAQ</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/contact/"><h5>Contact</h5></a>
+    
+  
+  </div>
+    
+  
+  
+
+</div>
+
+</nav>
+
+<header class="w3-container w3-card-4 w3-theme w3-top oversec-header">
+
+  <span class="headline">
+  <i class="w3-opennav fa fa-bars" onclick="w3_open()"></i>
+ Oversec Help
+  </span>
+  <div style="float: right; display: inline-block; margin-right:5px">
+
+<div class="dropdown">
+  <img src="/static/flags/UN.png" onclick="toggleLang()" class="dropbtn"/>
+  <div id="langDropdown" class="dropdown-content">
+      <a class="noprepend" href="/en/buttons/"><img src="/static/flags/GB.png"></a>
+      <a class="noprepend" href="/de/buttons/"><img src="/static/flags/DE.png"></a>
+      <a class="noprepend" href="/fr/buttons/"><img src="/static/flags/FR.png"></a>
+      <a class="noprepend" href="/es/buttons/"><img src="/static/flags/ES.png"></a>
+      <a class="noprepend" href="/pt/buttons/"><img src="/static/flags/PT.png"></a>
+      <a class="noprepend" href="/ru/buttons/"><img src="/static/flags/RU.png"></a>
+  </div>
+</div>
+
+
+  </div>
+</header>
+
+<div class="w3-container" style="margin-top:30px">
+    
+  <h2>Buttons</h2>
+  <p><a name="button_hide"></a></p>
+<h3>Hide-Button</h3>
+<div class="buttoncircle"><img  src="ic_clear_black_24dp.png"></img></div><p>Tap this button to temporarily hide all the WhatsSecret overlays.</p>
+<p>Tap again at the same position  (while this and all other buttons are hidden) to un-hide!</p>
+<p>This button also functions as a panic button: Long-tap it to enter <a href="/panic">Panic Mode</a></p>
+<p>Double-tapping this button brings up the <a href="/setup/per-app-config/">per-app configuration page</a> where you can configure various aspects of how  WhatsSecret  works in conjunction with the current app.</p>
+<p><em>Note: This button can be dragged and placed anywhere on the screen.</em></p>
+<p><a name="button_encrypt"></a></p>
+<h3>Encrypt-Button</h3>
+<div class="buttoncircle"><img src="ic_lock_black_24dp.png"></img></div><p><a name="button_encrypt_initial"></a>
+Tap this button to encrypt the entered text. After the text has been encrypted, this button automatically disappears. So if you place this button over the underlying app's "send" or "save" button, you can make sure that you do not accidentally send or save plain text.</p>
+<p><a name="button_encrypt_encryptionparamsremembered"></a>
+If you have not encrypted anything yet in this app, tapping this button will bring up a screen to enter or modify the encryption params. Next time you tap this button, those params will be used and the encryption will happen instantly. 
+If you still want to change the encryption params, long-tap on this button to forcefully bring up the encryption-params screen.</p>
+<p><em>Hint: Double-tapping this button will hide it for a short time, so that the underlying app's buttons can be tapped.
+So if the Encrypt-Button is positioned right above the underlying app's send button, you can <em>triple</em> tap at this position to send an <em>unencrypted</em> message!</em></p>
+<p><em>Note: This button can be dragged and placed around the input field.</em></p>
+<p><a name="button_decrypt"></a></p>
+<h3>Decrypt-/Clear Button</h3>
+<p>This button changes its icon and function depending on the text in the input field:</p>
+<div class="buttoncircle"><img src="ic_lock_open_black_24dp.png"></img></div><p>There is encrypted text in the input field. Tap this button to decrypt it and put the plain text back into the input field.</p>
+<p><em>Note: This functionality is not available on Android Kitkat for security reasons!</em></p>
+<div class="buttoncircle"><img  src="ic_backspace_black_24dp.png"></img></div><p>There is some text in the input field. Tapping this button clears all text.</p>
+<p><em>Note: This button can be dragged and placed around the input field.</em></p>
+<p><a name="button_info"></a></p>
+<h3>Info-Button</h3>
+<div class="buttoncircle"><img src="ic_info_outline_black_24dp.png"></img></div><p>Tap this button to enter info mode.</p>
+<p>While in info mode, there will be a smaller version of this button next to every encrypted text found on the screen. 
+Tap on of the small info button to show detailed encryption information about this text.</p>
+<div class="buttoncircle"><img  src="ic_not_interested_black_24dp.png"></img></div><p>While in info-mode, this button shows like above. Tap it to leave info mode.</p>
+<p><em>Note: This button can be dragged and placed anywhere on the screen.</em></p>
+<p><em>Note: This button is not enabled by default. Click the config button to open the <a href="/setup/per-app-config/">per-app configuration page</a> where you can enable the info button.</em></p>
+<p>*Note: Long-tapping the Info-Button brings up the <a href="/setup/per-app-config/">per-app configuration page</a> (see below). You can thus enable the info button and disable the config button in the <a href="/setup/per-app-config/">per-app configuration page</a> and still have access to the app config by long-tapping the info button.</p>
+<p><a name="button_config"></a></p>
+<h3>Config-Button</h3>
+<div class="buttoncircle"><img src="ic_settings_black_24dp.png"></img></div><p>Tapping this button brings up the <a href="/setup/per-app-config/">per-app configuration page</a> where you can configure various aspects of how Oversec works in conjunction with the current app.</p>
+<p><em>Note: This button can be dragged and placed anywhere on the screen.</em></p>
+
+
+</div>
+
+
+<br/>
+<br/>
+<footer class="w3-container">
+<!--
+    &copy; Copyright 2016 by oversec.io.
+-->
+  </footer>
+</div> 
+</body>

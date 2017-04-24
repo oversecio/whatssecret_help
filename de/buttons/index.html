@@ -1,0 +1,260 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 
+<link rel="stylesheet" href="/static/w3.css">
+  <link rel="stylesheet" href="/static/w3-theme-blue.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="/static/style.css">
+
+  <title>Buttons — Oversec Online Help</title>
+
+     <script>
+    /*
+    Browser Language Redirect script- By JavaScript Kit
+    For this and over 400+ free scripts, visit http://www.javascriptkit.com
+    This notice must stay intact
+    */
+    //Enter ISO 639-2 letter Language codes to detect (see: http://www.w3.org/WAI/ER/IG/ert/iso639.htm):
+    var langcodes=new Array("en", "de", "fr", "es", "pt", "ru", "default")
+    //Enter corresponding redirect URLs (last one is for default URL):
+    var langredirects=new Array("en", "de", "fr", "es", "pt", "ru", "en")
+    var languageinfo=navigator.language? navigator.language : navigator.userLanguage
+    var gotodefault=1
+    
+
+    //alert("languageinfo: "+languageinfo.substr(0,2));
+
+
+
+
+function w3_open() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "block";
+}
+function w3_close() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "none";
+}
+
+function toggleLang() {
+ document.getElementById("langDropdown").classList.toggle("show");
+}
+
+
+//TODO: write a lektor plugin (see https://github.com/lektor/lektor-markdown-admonition for an example)
+//to fix the links during *build* time
+
+function prependAlternatives() {
+
+  var curlang=""
+  for (i=0;i<langcodes.length-1;i++){
+        if (window.location.pathname.startsWith("/"+langcodes[i]+"/")) {
+          // alert("Hoorikaj" +i+ "=="+langcodes[i]+" // "+langredirects[i])
+          curlang = langcodes[i]
+          break
+        }
+      }
+
+
+  for(i=0;i<document.links.length;i++) 
+    { 
+     pathname=document.links[i].pathname
+     classname = document.links[i].className
+     if (   "noprepend"!=classname &&
+             pathname.startsWith("/") && 
+            !pathname.startsWith("/"+curlang+"/")
+            ) 
+       {
+         newpathname =  "/" +curlang +pathname;
+         //alert ("newpathname="+newpathname)
+         document.links[i].pathname = newpathname;
+       }
+    } 
+}
+window.onload = prependAlternatives
+
+    </script>
+<style type="text/css">
+  
+
+/* Dropdown Button */
+.dropbtn {
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFD89E;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+</style>
+
+</head>
+<body>
+
+<nav  class="w3-sidenav w3-card-2 w3-top main-nav" style="width:50%;display:none;z-index:2">
+  <div class="w3-container w3-theme-d2 oversec-header"  onclick="w3_close()">
+   <h4>
+   <i class="w3-closenav w3-rleft w3-xlarge fa fa-close" style="padding-top:5px" onclick="w3_close()"></i>
+
+    </h4>
+  </div>
+  
+
+<div >
+  
+    <a class="menuentry" href="/de/"><h5>Willkommen</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/de/buttons/"><h5>Buttons</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/de/encoding/"><h5>Kodierung</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/de/setup/"><h5>Einrichtung</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/de/setup/per-app-config/"><h5>App-Konfiguration</h5></a>
+    
+  
+  </div>
+    
+  
+  
+    <a class="menuentry" href="/de/panic/"><h5>Panik Modus</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/de/encryption-parameters/"><h5>Verschlüsselungs Einstellungen</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/de/faq/"><h5>FAQ</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/de/contact/"><h5>Kontakt</h5></a>
+    
+  
+  </div>
+    
+  
+  
+
+</div>
+
+</nav>
+
+<header class="w3-container w3-card-4 w3-theme w3-top oversec-header">
+
+  <span class="headline">
+  <i class="w3-opennav fa fa-bars" onclick="w3_open()"></i>
+ Oversec Help
+  </span>
+  <div style="float: right; display: inline-block; margin-right:5px">
+
+<div class="dropdown">
+  <img src="/static/flags/UN.png" onclick="toggleLang()" class="dropbtn"/>
+  <div id="langDropdown" class="dropdown-content">
+      <a class="noprepend" href="/en/buttons/"><img src="/static/flags/GB.png"></a>
+      <a class="noprepend" href="/de/buttons/"><img src="/static/flags/DE.png"></a>
+      <a class="noprepend" href="/fr/buttons/"><img src="/static/flags/FR.png"></a>
+      <a class="noprepend" href="/es/buttons/"><img src="/static/flags/ES.png"></a>
+      <a class="noprepend" href="/pt/buttons/"><img src="/static/flags/PT.png"></a>
+      <a class="noprepend" href="/ru/buttons/"><img src="/static/flags/RU.png"></a>
+  </div>
+</div>
+
+
+  </div>
+</header>
+
+<div class="w3-container" style="margin-top:30px">
+    
+  <h2>Buttons</h2>
+  <p><a name="button_hide"></a></p>
+<h3>Verstecken Button</h3>
+<div class="buttoncircle"><img  src="/buttons/ic_clear_black_24dp.png"></img></div><p>Berühre diesen Button um Oversec zeitweise zu verstecken.</p>
+<p>Wenn Du den Bildschirm an der gleichen Stelle nochmals berührst, wird Oversec wieder sichtbar!</p>
+<p>Dieser Button dient auch als Panik-Button: Berühre ihn <em>lang</em> um den <a href="/panic">Panik Modus</a> zu aktivieren.</p>
+<p>Doppelt-Berühren bring dich zur <a href="/setup/per-app-config/">App Konfiguration</a> wo du Oversec für die gerade aktive App konfigurieren kannst.</p>
+<p><em>Tipp: Dieser Button kann mittels Drag&amp;Drop überall auf dem Bildschirm positioniert werden.</em>
+<a name="button_encrypt"></a></p>
+<h3>Verschlüsseln Button</h3>
+<div class="buttoncircle"><img src="/buttons/ic_lock_black_24dp.png"></img></div><p><a name="button_encrypt_initial"></a>
+Berühre diesen Button um den gerade eingegebenen Text zu verschlüsseln. Nachdem der Text verschlüsselt wurde, verschwindet dieser Button automatisch. Wenn du also diesen Button direkt über den "Senden" Button der darunterliegenden App positionierst, stellst Du damit sicher dass nicht versehentlich unverschlüsselter Text versendet wird.</p>
+<p><a name="button_encrypt_encryptionparamsremembered"></a>
+Nach dem ersten Berühren, gelangst Du mit diesem Button auf eine Seite, wo Du die Verschlüsselungseinstellungen angeben kannst.
+Beim nächsten Mal werden diese Einstellungen automatisch verwendet und die Verschlüsselung erfolgt sofort.
+Wenn Du die Einstellungen wieder ändern willst, berühre diesen Button <em>lang</em>, um die Seite mit den Verschlüsselungseinstellungen wieder anzuzeigen.</p>
+<p>*Tipp: Doppelt-Berühren versteckt den Button für eine kurze Zeit, so dass ein Button in der darunterliegenden App sichtbar wird.
+Wenn der Verschlüsseln-Button also direkt über dem "Senden" Button der darunterliegenden App positioniert ist, kannst Du durch <em>dreimal</em> Berühren eine unverschlüsselte Nachricht senden.</p>
+<p><em>Tipp: Dieser Button kann mittels Drag&amp;Drop in der Nähe des Eingabefelds positioniert werden.</em>
+<a name="button_decrypt"></a></p>
+<h3>Entschlüsseln-/Löschen Button</h3>
+<p>Das Icon auf diesem Button ändert sich, je nachdem welcher Text im Eingabefeld steht:</p>
+<div class="buttoncircle"><img src="/buttons/ic_lock_open_black_24dp.png"></img></div><p>Es befindet sich verschlüsselter Text im Eingabefeld. Berühre diesen Button um den Text zu entschlüsseln.</p>
+<p><em>Hinweis: Diese Funktion ist aus Sicherheitsgründen nicht Android Kitkat verfügbar!</em></p>
+<div class="buttoncircle"><img  src="/buttons/ic_backspace_black_24dp.png"></img></div><p>Es befindet sich unverschlüsselter Text im Eingabefeld. Berühre diesen Button um den Text komplett zu entfernen.</p>
+<p><em>Tipp: Dieser Button kann mittels Drag&amp;Drop in der Nähe des Eingabefelds positioniert werden.</em></p>
+<p><a name="button_info"></a></p>
+<h3>Info Button</h3>
+<div class="buttoncircle"><img src="/buttons/ic_info_outline_black_24dp.png"></img></div><p>Berühre diesen Button um in den Info-Modus zu gelangen.</p>
+<p>Im Info-Modus wird neben jedem verschlüsseltem Text, der auf dem Bildschirm gefunden wird, ein kleiner Info-Button angezeigt.
+Berühre einen kleinen Info-Button um detaillierte Informationen zur Verschlüsselung anzuzeigen.</p>
+<div class="buttoncircle"><img  src="/buttons/ic_not_interested_black_24dp.png"></img></div><p>Wenn im Info-Modus, wird der Button wie oben angezeigt. Berühre ihn um dem Info Modus wieder zu verlassen.</p>
+<p><em>Tipp: Dieser Button kann mittels Drag&amp;Drop überall auf dem Bildschirm positioniert werden.</em></p>
+<p>*Tipp: Dieser Button ist standardmäßig nicht sichtbar. Berühre den Konfiguration Button um die <a href="/setup/per-app-config/">App Konfigurations Seite</a> zu öffnen, wo Du dann den Info Button aktivieren kannst.</p>
+<p>*Tipp: Lang Berühren des Info Buttons bringt öffnet die <a href="/setup/per-app-config/">App Konfigurations Seite</a> (siehe unten). Du kannst also den Info Button aktivieren und den Konfiguration Button deaktivieren, und kannst trotzdem jederzeit die Konfiguration durch lang Berühren des Info Buttons öffnen.</p>
+<p><a name="button_config"></a></p>
+<h3>Konfiguration Button</h3>
+<div class="buttoncircle"><img src="/buttons/ic_settings_black_24dp.png"></img></div><p>Berühre diesen Button um die <a href="/setup/per-app-config/">App Konfigurations Seite</a> zu Öffnen, wo du Oversec für die gerade aktive App konfigurieren kannst.</p>
+<p><em>Tipp: Dieser Button kann mittels Drag&amp;Drop überall auf dem Bildschirm positioniert werden.</em></p>
+
+
+</div>
+
+
+<br/>
+<br/>
+<footer class="w3-container">
+<!--
+    &copy; Copyright 2016 by oversec.io.
+-->
+  </footer>
+</div> 
+</body>

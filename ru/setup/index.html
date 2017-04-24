@@ -1,0 +1,277 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 
+<link rel="stylesheet" href="/static/w3.css">
+  <link rel="stylesheet" href="/static/w3-theme-blue.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="/static/style.css">
+
+  <title>Настроить — Oversec Online Help</title>
+
+     <script>
+    /*
+    Browser Language Redirect script- By JavaScript Kit
+    For this and over 400+ free scripts, visit http://www.javascriptkit.com
+    This notice must stay intact
+    */
+    //Enter ISO 639-2 letter Language codes to detect (see: http://www.w3.org/WAI/ER/IG/ert/iso639.htm):
+    var langcodes=new Array("en", "de", "fr", "es", "pt", "ru", "default")
+    //Enter corresponding redirect URLs (last one is for default URL):
+    var langredirects=new Array("en", "de", "fr", "es", "pt", "ru", "en")
+    var languageinfo=navigator.language? navigator.language : navigator.userLanguage
+    var gotodefault=1
+    
+
+    //alert("languageinfo: "+languageinfo.substr(0,2));
+
+
+
+
+function w3_open() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "block";
+}
+function w3_close() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "none";
+}
+
+function toggleLang() {
+ document.getElementById("langDropdown").classList.toggle("show");
+}
+
+
+//TODO: write a lektor plugin (see https://github.com/lektor/lektor-markdown-admonition for an example)
+//to fix the links during *build* time
+
+function prependAlternatives() {
+
+  var curlang=""
+  for (i=0;i<langcodes.length-1;i++){
+        if (window.location.pathname.startsWith("/"+langcodes[i]+"/")) {
+          // alert("Hoorikaj" +i+ "=="+langcodes[i]+" // "+langredirects[i])
+          curlang = langcodes[i]
+          break
+        }
+      }
+
+
+  for(i=0;i<document.links.length;i++) 
+    { 
+     pathname=document.links[i].pathname
+     classname = document.links[i].className
+     if (   "noprepend"!=classname &&
+             pathname.startsWith("/") && 
+            !pathname.startsWith("/"+curlang+"/")
+            ) 
+       {
+         newpathname =  "/" +curlang +pathname;
+         //alert ("newpathname="+newpathname)
+         document.links[i].pathname = newpathname;
+       }
+    } 
+}
+window.onload = prependAlternatives
+
+    </script>
+<style type="text/css">
+  
+
+/* Dropdown Button */
+.dropbtn {
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFD89E;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+</style>
+
+</head>
+<body>
+
+<nav  class="w3-sidenav w3-card-2 w3-top main-nav" style="width:50%;display:none;z-index:2">
+  <div class="w3-container w3-theme-d2 oversec-header"  onclick="w3_close()">
+   <h4>
+   <i class="w3-closenav w3-rleft w3-xlarge fa fa-close" style="padding-top:5px" onclick="w3_close()"></i>
+
+    </h4>
+  </div>
+  
+
+<div >
+  
+    <a class="menuentry" href="/ru/"><h5>Добро пожаловать!</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/ru/buttons/"><h5>Кнопки</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/ru/encoding/"><h5>Кодировка</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/ru/setup/"><h5>Настроить</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/ru/setup/per-app-config/"><h5>конфигурации приложения</h5></a>
+    
+  
+  </div>
+    
+  
+  
+    <a class="menuentry" href="/ru/panic/"><h5>Режим паники</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/ru/encryption-parameters/"><h5>Параметры шифрования</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/ru/faq/"><h5>Вопросы-Ответы</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/ru/contact/"><h5>О КОМПАНИИ</h5></a>
+    
+  
+  </div>
+    
+  
+  
+
+</div>
+
+</nav>
+
+<header class="w3-container w3-card-4 w3-theme w3-top oversec-header">
+
+  <span class="headline">
+  <i class="w3-opennav fa fa-bars" onclick="w3_open()"></i>
+ Oversec Help
+  </span>
+  <div style="float: right; display: inline-block; margin-right:5px">
+
+<div class="dropdown">
+  <img src="/static/flags/UN.png" onclick="toggleLang()" class="dropbtn"/>
+  <div id="langDropdown" class="dropdown-content">
+      <a class="noprepend" href="/en/setup/"><img src="/static/flags/GB.png"></a>
+      <a class="noprepend" href="/de/setup/"><img src="/static/flags/DE.png"></a>
+      <a class="noprepend" href="/fr/setup/"><img src="/static/flags/FR.png"></a>
+      <a class="noprepend" href="/es/setup/"><img src="/static/flags/ES.png"></a>
+      <a class="noprepend" href="/pt/setup/"><img src="/static/flags/PT.png"></a>
+      <a class="noprepend" href="/ru/setup/"><img src="/static/flags/RU.png"></a>
+  </div>
+</div>
+
+
+  </div>
+</header>
+
+<div class="w3-container" style="margin-top:30px">
+    
+  <h2>Настроить</h2>
+  <p><a name="main_help"></a>
+<a name="main_help_acsconfig"></a></p>
+<h3>Необходимая настройка</h3>
+<p>The basic operating principle of WhatsSecret is that it constantly monitors the screen for encrypted text.</p>
+<p>To be able to read the screen contents, it has to be enabled as a so called "Accessibility Service".</p>
+<p>So as the first step, before you can use WhatsSecret, you need to enable WhatsSecret as an Accessibility Service in Androids "Accessibility Settings".</p>
+<p>Tapping on "Configure" will lead you directly to the relevant Settings page:</p>
+<p>Основной принцип работы WhatsSecret заключается в том, что он постоянно контролирует экран для зашифрованного текста.</p>
+<p>Чтобы иметь возможность читать содержимое экрана, его нужно включить как так называемую «службу специальных возможностей».</p>
+<p>Итак, на первом этапе, прежде чем вы сможете использовать WhatsSecret, вам нужно включить WhatsSecret в качестве Службы специальных возможностей в «Настройках специальных возможностей» Андроидов.</p>
+<p>Нажатие кнопки «Настроить» приведет вас непосредственно к соответствующей странице настроек:</p>
+<p>Теперь нажмите «WhatsSecret»
+<br></br>
+<img src="/setup/acs_settings_step_1_L.png"></img>
+<br></br>
+Теперь нажмите на переключатель в правом верхнем углу
+<br></br>
+<img src="/setup/acs_settings_step_2_L.png"></img>
+<br></br>
+Нажмите «Вкл».
+<br></br>
+<img src="/setup/acs_settings_step_3_L.png"></img>
+<br></br>
+Теперь переключатель должен быть включен. Нажмите «НАЗАД»,
+<br></br>
+<img src="/setup/acs_settings_step_4_L.png"></img>
+<br></br>
+Теперь WhatsSecret должен быть включен. Нажмите «НАЗАД»,
+<br></br>
+<img src="/setup/acs_settings_step_5_L.png"></img>
+<br></br></p>
+<p><a name="main_help_accessibilitysettingsnotresolvable"></a>
+На некоторых телефонах с пользовательской версией Android страница настроек, которая позволяет настраивать службы специальных возможностей, недоступна или недоступна в ожидаемом месте.</p>
+<p>Попробуйте вручную найти страницу «Доступность» в настройках телефона, а затем <a href="#main_help_acsconfig"> включить WhatsSecret как службу специальных возможностей </a>.</p>
+<p><a name="main_settings"></a></p>
+<h3>Общие настройки</h3>
+<h4>Разрешить скриншоты</h4>
+<p>По умолчанию Oversec запрещает системе снимать скриншоты, показывая конфиденциальную информацию. В зависимости от способа создания скриншотов снятие скриншотов либо сбой, либо получение пустого или черного изображения.</p>
+<p>Вы можете временно отключить это поведение, если вы хотите делать скриншоты, чтобы показать или рассказать об Oversec, но мы настоятельно рекомендуем не отключать этот параметр!</p>
+<h4>Паника при отключении экрана</h4>
+<p>Войдите в режим паники, когда экран выключится. Включите это, если вы хотите входить в режим паники каждый раз, когда экран телефона выключается. Чтобы активировать Oversec, вам придется набирать секретный код в модуле набора номера. Используйте это, чтобы заставить вас выглядеть непринужденно на каждом экране.</p>
+<h4>Скрыть значок запуска в режиме паники</h4>
+<p>Включите это, чтобы скрыть значок запуска Oversec в режиме паники. Вам нужно будет набрать секретный код в дозвоне, чтобы повторно активировать Oversec и отобразить значок запуска.</p>
+<h4>Код секретного кода</h4>
+<p>Настройте код для набора (в приложении дозвона), чтобы повторно активировать Oversec (выход из режима паники)
+<a name="main_decoy"></a></p>
+<h3>Содержание приманки</h3>
+<p>При использовании <a href="/encoding">Кодирование невидимых</a>, чтобы обмануть любого стороннего наблюдателя, вы можете автоматически добавлять видимый текст маски вместо невидимого зашифрованного текста.</p>
+<p>На вкладке «Приманка» из основных настроек приложения вы можете определить свои собственные шаблоны приманки или изменить шаблоны по умолчанию.</p>
+<p>Подсказка:
+Вот несколько отличных сайтов, на которых вы можете создать ложный контент из</p>
+<ul>
+<li><a href="http://lyrics.wikia.com/wiki/LyricWiki:Top_100">Текст песни</a></li>
+<li><a href="http://panipsum.com/">Pan Ipsum</a></li>
+</ul>
+
+
+</div>
+
+
+<br/>
+<br/>
+<footer class="w3-container">
+<!--
+    &copy; Copyright 2016 by oversec.io.
+-->
+  </footer>
+</div> 
+</body>

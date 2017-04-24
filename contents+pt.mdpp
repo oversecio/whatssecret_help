@@ -1,0 +1,7 @@
+_model: page_index
+---
+!INCLUDE "contents+pt.md"
+---
+redirect: yes
+---
+_template: page_index.html

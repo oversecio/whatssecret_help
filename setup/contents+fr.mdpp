@@ -1,0 +1,24 @@
+_model: page
+---
+!INCLUDE "setup/title+fr.md"
+
+---
+body:
+
+<a name="main_help"></a>
+<a name="main_help_acsconfig"></a>
+!INCLUDE "setup/required+fr.md"
+
+<a name="main_help_accessibilitysettingsnotresolvable"></a>
+!INCLUDE "setup/acsnotresolvable+fr.md"
+
+
+<a name="main_settings"></a>
+!INCLUDE "setup/general+fr.md"
+
+<a name="main_decoy"></a>
+!INCLUDE "setup/decoy+fr.md"
+
+
+---
+sortstring: b

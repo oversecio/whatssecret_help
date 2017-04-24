@@ -1,0 +1,12 @@
+!INCLUDE "encryption-parameters/title+pt.md"
+
+---
+body:
+
+!INCLUDE "encryption-parameters/simple+pt.md"
+
+---
+sortstring:
+
+d
+

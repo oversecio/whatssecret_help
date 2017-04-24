@@ -1,0 +1,11 @@
+_model: page
+---
+!INCLUDE "encoding/title+es.md"
+
+---
+body:
+
+&appname; provides a unique method of encoding an encrypted message:
+
+!INCLUDE "encoding/decoy+es.md"
+

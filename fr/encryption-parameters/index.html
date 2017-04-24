@@ -1,0 +1,231 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 
+<link rel="stylesheet" href="/static/w3.css">
+  <link rel="stylesheet" href="/static/w3-theme-blue.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="/static/style.css">
+
+  <title>Paramètres de Chiffrement — Oversec Online Help</title>
+
+     <script>
+    /*
+    Browser Language Redirect script- By JavaScript Kit
+    For this and over 400+ free scripts, visit http://www.javascriptkit.com
+    This notice must stay intact
+    */
+    //Enter ISO 639-2 letter Language codes to detect (see: http://www.w3.org/WAI/ER/IG/ert/iso639.htm):
+    var langcodes=new Array("en", "de", "fr", "es", "pt", "ru", "default")
+    //Enter corresponding redirect URLs (last one is for default URL):
+    var langredirects=new Array("en", "de", "fr", "es", "pt", "ru", "en")
+    var languageinfo=navigator.language? navigator.language : navigator.userLanguage
+    var gotodefault=1
+    
+
+    //alert("languageinfo: "+languageinfo.substr(0,2));
+
+
+
+
+function w3_open() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "block";
+}
+function w3_close() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "none";
+}
+
+function toggleLang() {
+ document.getElementById("langDropdown").classList.toggle("show");
+}
+
+
+//TODO: write a lektor plugin (see https://github.com/lektor/lektor-markdown-admonition for an example)
+//to fix the links during *build* time
+
+function prependAlternatives() {
+
+  var curlang=""
+  for (i=0;i<langcodes.length-1;i++){
+        if (window.location.pathname.startsWith("/"+langcodes[i]+"/")) {
+          // alert("Hoorikaj" +i+ "=="+langcodes[i]+" // "+langredirects[i])
+          curlang = langcodes[i]
+          break
+        }
+      }
+
+
+  for(i=0;i<document.links.length;i++) 
+    { 
+     pathname=document.links[i].pathname
+     classname = document.links[i].className
+     if (   "noprepend"!=classname &&
+             pathname.startsWith("/") && 
+            !pathname.startsWith("/"+curlang+"/")
+            ) 
+       {
+         newpathname =  "/" +curlang +pathname;
+         //alert ("newpathname="+newpathname)
+         document.links[i].pathname = newpathname;
+       }
+    } 
+}
+window.onload = prependAlternatives
+
+    </script>
+<style type="text/css">
+  
+
+/* Dropdown Button */
+.dropbtn {
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFD89E;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+</style>
+
+</head>
+<body>
+
+<nav  class="w3-sidenav w3-card-2 w3-top main-nav" style="width:50%;display:none;z-index:2">
+  <div class="w3-container w3-theme-d2 oversec-header"  onclick="w3_close()">
+   <h4>
+   <i class="w3-closenav w3-rleft w3-xlarge fa fa-close" style="padding-top:5px" onclick="w3_close()"></i>
+
+    </h4>
+  </div>
+  
+
+<div >
+  
+    <a class="menuentry" href="/fr/"><h5>Bienvenue</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/fr/buttons/"><h5>Boutons</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/fr/encoding/"><h5>Codage</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/fr/setup/"><h5>Installation</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/fr/setup/per-app-config/"><h5>Configuration par application</h5></a>
+    
+  
+  </div>
+    
+  
+  
+    <a class="menuentry" href="/fr/panic/"><h5>Panique</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/fr/encryption-parameters/"><h5>Paramètres de Chiffrement</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/fr/faq/"><h5>FAQ</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/fr/contact/"><h5>Contact</h5></a>
+    
+  
+  </div>
+    
+  
+  
+
+</div>
+
+</nav>
+
+<header class="w3-container w3-card-4 w3-theme w3-top oversec-header">
+
+  <span class="headline">
+  <i class="w3-opennav fa fa-bars" onclick="w3_open()"></i>
+ Oversec Help
+  </span>
+  <div style="float: right; display: inline-block; margin-right:5px">
+
+<div class="dropdown">
+  <img src="/static/flags/UN.png" onclick="toggleLang()" class="dropbtn"/>
+  <div id="langDropdown" class="dropdown-content">
+      <a class="noprepend" href="/en/encryption-parameters/"><img src="/static/flags/GB.png"></a>
+      <a class="noprepend" href="/de/encryption-parameters/"><img src="/static/flags/DE.png"></a>
+      <a class="noprepend" href="/fr/encryption-parameters/"><img src="/static/flags/FR.png"></a>
+      <a class="noprepend" href="/es/encryption-parameters/"><img src="/static/flags/ES.png"></a>
+      <a class="noprepend" href="/pt/encryption-parameters/"><img src="/static/flags/PT.png"></a>
+      <a class="noprepend" href="/ru/encryption-parameters/"><img src="/static/flags/RU.png"></a>
+  </div>
+</div>
+
+
+  </div>
+</header>
+
+<div class="w3-container" style="margin-top:30px">
+    
+  <h2>Paramètres de Chiffrement</h2>
+  <p><a name="simple"><br/></a></p>
+<h1>Simple</h1>
+<p>Chiffrer en partageant uniquement un mot de passe simple.</p>
+<p>C'est un bon moyen d'essayer WhatsSecret, mais ce n'est peut-être pas très sécurisé: un attaquant peut simplement essayer / deviner le mot de passe, alors assurez-vous d'utiliser un mot de passe très long et compliqué.</p>
+<h3>Ajout de mots de passe</h3>
+<p>Pour chiffrer ou déchiffrer, vous devez d'abord ajouter un autre mot de passe en appuyant sur "Ajouter un mot de passe". WhatsSecret conservera et se souviendra d'un mot de passe jusqu'à l'heure que vous spécifiez lors de la saisie du mot de passe.</p>
+<p>Une fois qu'un mot de passe a expiré, il est complètement disparu. Vous devrez l'entrer à nouveau sur cette page!</p>
+<h3>Sélection des mots de passe</h3>
+<p>Pour chiffrer avec un ou plusieurs mots de passe, appuyez simplement sur la case à cocher à côté de chaque mot de passe. WhatsSecret va chiffrer le message pour chacun des mots de passe sélectionnés - Quiconque connait au moins un des mots de passe sélectionnés pourra décrypter le message.</p>
+
+
+</div>
+
+
+<br/>
+<br/>
+<footer class="w3-container">
+<!--
+    &copy; Copyright 2016 by oversec.io.
+-->
+  </footer>
+</div> 
+</body>

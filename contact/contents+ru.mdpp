@@ -1,0 +1,9 @@
+!INCLUDE "contact/title+ru.md"
+
+---
+body:
+
+!INCLUDE "contact/body_whatsapp+ru.md"
+
+---
+sortstring: z

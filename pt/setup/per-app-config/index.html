@@ -1,0 +1,248 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 
+<link rel="stylesheet" href="/static/w3.css">
+  <link rel="stylesheet" href="/static/w3-theme-blue.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="/static/style.css">
+
+  <title>Configuração por-app — Oversec Online Help</title>
+
+     <script>
+    /*
+    Browser Language Redirect script- By JavaScript Kit
+    For this and over 400+ free scripts, visit http://www.javascriptkit.com
+    This notice must stay intact
+    */
+    //Enter ISO 639-2 letter Language codes to detect (see: http://www.w3.org/WAI/ER/IG/ert/iso639.htm):
+    var langcodes=new Array("en", "de", "fr", "es", "pt", "ru", "default")
+    //Enter corresponding redirect URLs (last one is for default URL):
+    var langredirects=new Array("en", "de", "fr", "es", "pt", "ru", "en")
+    var languageinfo=navigator.language? navigator.language : navigator.userLanguage
+    var gotodefault=1
+    
+
+    //alert("languageinfo: "+languageinfo.substr(0,2));
+
+
+
+
+function w3_open() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "block";
+}
+function w3_close() {
+    var x = document.getElementsByClassName("w3-sidenav")[0];
+    x.style.display = "none";
+}
+
+function toggleLang() {
+ document.getElementById("langDropdown").classList.toggle("show");
+}
+
+
+//TODO: write a lektor plugin (see https://github.com/lektor/lektor-markdown-admonition for an example)
+//to fix the links during *build* time
+
+function prependAlternatives() {
+
+  var curlang=""
+  for (i=0;i<langcodes.length-1;i++){
+        if (window.location.pathname.startsWith("/"+langcodes[i]+"/")) {
+          // alert("Hoorikaj" +i+ "=="+langcodes[i]+" // "+langredirects[i])
+          curlang = langcodes[i]
+          break
+        }
+      }
+
+
+  for(i=0;i<document.links.length;i++) 
+    { 
+     pathname=document.links[i].pathname
+     classname = document.links[i].className
+     if (   "noprepend"!=classname &&
+             pathname.startsWith("/") && 
+            !pathname.startsWith("/"+curlang+"/")
+            ) 
+       {
+         newpathname =  "/" +curlang +pathname;
+         //alert ("newpathname="+newpathname)
+         document.links[i].pathname = newpathname;
+       }
+    } 
+}
+window.onload = prependAlternatives
+
+    </script>
+<style type="text/css">
+  
+
+/* Dropdown Button */
+.dropbtn {
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFD89E;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+</style>
+
+</head>
+<body>
+
+<nav  class="w3-sidenav w3-card-2 w3-top main-nav" style="width:50%;display:none;z-index:2">
+  <div class="w3-container w3-theme-d2 oversec-header"  onclick="w3_close()">
+   <h4>
+   <i class="w3-closenav w3-rleft w3-xlarge fa fa-close" style="padding-top:5px" onclick="w3_close()"></i>
+
+    </h4>
+  </div>
+  
+
+<div >
+  
+    <a class="menuentry" href="/pt/"><h5>Bem vinda</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/pt/buttons/"><h5>Botões</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/pt/encoding/"><h5>Codificação</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/pt/setup/"><h5>Configuração</h5></a>
+    
+      <div class="menuindent">
+    <a class="menuentry" href="/pt/setup/per-app-config/"><h5>Configuração por-app</h5></a>
+    
+  
+  </div>
+    
+  
+  
+    <a class="menuentry" href="/pt/panic/"><h5>Pânico</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/pt/encryption-parameters/"><h5>Parâmetros de Criptografia</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/pt/faq/"><h5>Perguntas frequentes</h5></a>
+    
+  
+  
+    <a class="menuentry" href="/pt/contact/"><h5>Contato</h5></a>
+    
+  
+  </div>
+    
+  
+  
+
+</div>
+
+</nav>
+
+<header class="w3-container w3-card-4 w3-theme w3-top oversec-header">
+
+  <span class="headline">
+  <i class="w3-opennav fa fa-bars" onclick="w3_open()"></i>
+ Oversec Help
+  </span>
+  <div style="float: right; display: inline-block; margin-right:5px">
+
+<div class="dropdown">
+  <img src="/static/flags/UN.png" onclick="toggleLang()" class="dropbtn"/>
+  <div id="langDropdown" class="dropdown-content">
+      <a class="noprepend" href="/en/setup/per-app-config/"><img src="/static/flags/GB.png"></a>
+      <a class="noprepend" href="/de/setup/per-app-config/"><img src="/static/flags/DE.png"></a>
+      <a class="noprepend" href="/fr/setup/per-app-config/"><img src="/static/flags/FR.png"></a>
+      <a class="noprepend" href="/es/setup/per-app-config/"><img src="/static/flags/ES.png"></a>
+      <a class="noprepend" href="/pt/setup/per-app-config/"><img src="/static/flags/PT.png"></a>
+      <a class="noprepend" href="/ru/setup/per-app-config/"><img src="/static/flags/RU.png"></a>
+  </div>
+</div>
+
+
+  </div>
+</header>
+
+<div class="w3-container" style="margin-top:30px">
+    
+ 
+
+  <h4>List of apps with known issues:</h4>
+  <ul>
+
+       
+  </ul>
+ <h2>Configuração por-app</h2>
+  <p><div class="buttoncircle"><img src="ic_settings_black_24dp.png"/></div>
+Nota: Esta página de configuração também pode ser aberta tocando no botão WhatsSecret config.</p>
+<p><a name="main"></a></p>
+<h2>Opções</h2>
+<p>Opções gerais</p>
+<h4>Botão Config.</h4>
+<p>Mostra o <a href="/buttons#button_config">Botão Config</a> que permite o acesso direto a esta página de configuração.</p>
+<h4>Iniciar oculto</h4>
+<p>Quando marcado, WhatsSecret não será inicialmente mostrado ao inserir Whatsapp. Você terá que tocar no (invisível) <a href="/buttons#button_hide">Botão Ocultar</a> para mostrar a sobreposição de tela WhatsSecret.</p>
+<h4>Botão Ocultar</h4>
+<p>Mostra o <a href="/buttons#button_hide">Botão Ocultar</a> que permite ocultar temporariamente a sobreposição de tela WhatsSecret.</p>
+<p>Dica: Este botão também funciona como [Botão Pânico] (/panic), por isso recomenda-se manter sempre este botão ativado!</p>
+<h4>Botão Descriptografar / Limpar</h4>
+<p>Mostra o botão <a href="/buttons#button_decrypt">Botão Descriptografar / Limpar</a> que permite decifrar ou limpar o campo de entrada atual.</p>
+<p><a name="appearance"></a>
+<a name="appearance"></a></p>
+<h2>Aparência</h2>
+<p>Aparência visual</p>
+<p>Fine-Tune a aparência visual das sobreposições de tela WhatsSecret - coisas como fontes, tamanhos, preenchimento, cores, transparências etc.</p>
+
+
+</div>
+
+
+<br/>
+<br/>
+<footer class="w3-container">
+<!--
+    &copy; Copyright 2016 by oversec.io.
+-->
+  </footer>
+</div> 
+</body>

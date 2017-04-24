@@ -1,0 +1,18 @@
+_model: page
+---
+!INCLUDE "buttons/title+fr.md"
+
+---
+body:
+
+!INCLUDE "buttons/button_hide+fr.md"
+
+!INCLUDE "buttons/button_encrypt+fr.md"
+
+!INCLUDE "buttons/button_decrypt+fr.md"
+
+!INCLUDE "buttons/button_info+fr.md"
+
+!INCLUDE "buttons/button_config+fr.md"
+
+
