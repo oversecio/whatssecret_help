@@ -1,6 +1,6 @@
 <a name="button_compose"></a>
 ### Botón de componer
-<div class="buttoncircle"><img src="ic_create_black_24dp.png"></img></div>
+<div class="buttoncircle"><img src="/buttons/ic_create_black_24dp.png"></img></div>
 
 
 Este botón le permite introducir texto en una pantalla aparte y luego colocar el texto cifrado en el portapapeles.

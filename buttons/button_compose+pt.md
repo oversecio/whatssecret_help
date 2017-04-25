@@ -1,6 +1,6 @@
 <a name="button_compose"></a>
 ### Botão Redigir
-<div class="buttoncircle"><img src="ic_create_black_24dp.png"></img></div>
+<div class="buttoncircle"><img src="/buttons/ic_create_black_24dp.png"></img></div>
 
 Este botão permite que você insira texto em uma tela separada e, em seguida, coloque o texto criptografado na área de transferência.
 Você pode então colar o texto da área de transferência em campos de entrada que, de outra forma, não são acessíveis por appname;.
