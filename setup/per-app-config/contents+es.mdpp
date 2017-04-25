@@ -12,6 +12,8 @@ body:
 <a name="main"></a>
 !INCLUDE "setup/per-app-config/general+es.md"
 
+!INCLUDE "setup/general+es.md"
+
 !INCLUDE "setup/per-app-config/config+es.md"
 
 !INCLUDE "setup/per-app-config/starthidden_appsec+es.md"
@@ -25,8 +27,5 @@ body:
 
 ---
 sortstring: m
----
-_template:
 
-page_apps.html
 

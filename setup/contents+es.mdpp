@@ -16,6 +16,14 @@ body:
 <a name="main_settings"></a>
 !INCLUDE "setup/general+es.md"
 
+!INCLUDE "setup/per-app-config/config+es.md"
+
+!INCLUDE "setup/per-app-config/starthidden_appsec+es.md"
+
+!INCLUDE "setup/per-app-config/hide+es.md"
+
+!INCLUDE "setup/per-app-config/decrypt+es.md"
+
 <a name="main_decoy"></a>
 !INCLUDE "setup/decoy+es.md"
 
