@@ -9,6 +9,7 @@ body:
 <a name="main_help_acsconfig"></a>
 !INCLUDE "setup/required+fr.md"
 
+
 <a name="main_help_accessibilitysettingsnotresolvable"></a>
 !INCLUDE "setup/acsnotresolvable+fr.md"
 
@@ -16,13 +17,18 @@ body:
 <a name="main_settings"></a>
 !INCLUDE "setup/general+fr.md"
 
+
 !INCLUDE "setup/per-app-config/config+fr.md"
+
 
 !INCLUDE "setup/per-app-config/starthidden_appsec+fr.md"
 
+
 !INCLUDE "setup/per-app-config/hide+fr.md"
 
+
 !INCLUDE "setup/per-app-config/decrypt+fr.md"
+
 
 <a name="main_decoy"></a>
 !INCLUDE "setup/decoy+fr.md"

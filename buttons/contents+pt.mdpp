@@ -5,13 +5,18 @@ _model: page
 ---
 body:
 
+
 !INCLUDE "buttons/button_hide+pt.md"
+
 
 !INCLUDE "buttons/button_encrypt+pt.md"
 
+
 !INCLUDE "buttons/button_decrypt+pt.md"
 
+
 !INCLUDE "buttons/button_info+pt.md"
+
 
 !INCLUDE "buttons/button_config+pt.md"
 
