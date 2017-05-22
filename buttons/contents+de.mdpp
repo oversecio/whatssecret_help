@@ -15,9 +15,6 @@ body:
 !INCLUDE "buttons/button_decrypt+de.md"
 
 
-!INCLUDE "buttons/button_info+de.md"
-
-
 !INCLUDE "buttons/button_config+de.md"
 
 
